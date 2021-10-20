@@ -55,7 +55,7 @@
     background-color: white;
     display: flex;
     @media screen and (max-width: 767px) {
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
     #editor {
       padding: 15px;

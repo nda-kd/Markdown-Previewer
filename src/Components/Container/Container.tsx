@@ -4,7 +4,7 @@ import marked from "marked";
 import "./Container.scss";
 
 // And if you want to get really crazy, even tables:
-  
+
 //   Wild Header | Crazy Header | Another Header?
 //   ------------ | ------------- | -------------
 //   Your content can | be here, and it | can be here....
@@ -22,11 +22,11 @@ function Container() {
   \`\`\`
   // this is React code:
   
-  function anotherExample(firstLine, lastLine) {
-    if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
-      return multiLineCode;
-    }
-  }
+  ReactDOM.render(
+    <h1>Hello, world!</h1>,
+    document.getElementById('root')
+  );
+
   \`\`\`
 
   
@@ -63,7 +63,6 @@ function Container() {
         Markdown Previewer
       </div>
       <section>
-        {/* <Editor /> */}
         <textarea
           id="editor"
           value={content}
