@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>CodePen Embed - react markdown previewer</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="Lg2OK4W6UkUszjLnwGGMXZV6dmeofqXTxUewS1V/SiWIhbvSV5dvHemGSRu/UvhnFsZCTYQL7Dsx345j9TymTA==" />
+<link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/embed/embed-a597cbe50c093a5ab46947b89753b103d8d51022d1dd6e8246ddac4acb697dd7.css" />
+<style>
+    .hide {
+      display: none !important;
+    }
+
+    #result-box {
+      background: #1e1f26;
+      color: #e3e4e8;
+    }
+    .embed-footer,
+    .embed-nav {
+      background: #1e1f26;
+      
+    }
+    .embed-nav .code-types a,
+    .embed-nav .result-button-list a,
+    .action-button {
+      color: #e3e4e8;
+      background-color: #444857;
+    }
+    .embed-nav .code-types a.active,
+    .embed-nav .result-button-list a.active,
+    .action-button.active {
+      background: #5a5f73;
+      color: #e3e4e8;
+      box-shadow: inset 0px 3px #868ca0;
+    }
+    .embed-nav .logo-wrap .edit-on-codepen {
+      color: #e3e4e8;
+    }
+
+    .embed-nav svg {
+      stroke: #e3e4e8 !important;
+    }
+  </style>
+<link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/editor/themes/highcontrast-dark-438943b19efbe83048d50f337c6ec7f10286500eae654e577836f597c0fd4186.css" />
+<meta name="monetization" content="$ilp.uphold.com/biyqg2MkQKbe">
+</head>
+<body id="the-body" style="--borderWidth: 0;" class="codepen-embed-body  static">
+<nav class="embed-nav group" id="embed-nav">
+<ul class="code-types">
+<li class="code-type">
+<a id="html-link" href="#html-box" role="button" aria-pressed="false">
+HTML
+</a>
+</li>
+<li class="code-type">
+<a id="css-link" href="#css-box" role="button" aria-pressed="false">
+Sass
+</a>
+</li>
+<li class="code-type">
+<a id="js-link" href="#js-box" role="button" aria-pressed="false">
+Babel
+</a>
+</li>
+</ul>
+<ul class="result-button-list result-button-list-modal">
+<li class="results results-type">
+<a id="result-link" href="#result-box" class="active" aria-pressed="true" role="button">
+Result
+</a>
+</li>
+<li>
+<a href="#resources-link" id="skip-results-iframe-link">Skip Results Iframe</a>
+</li>
+</ul>
+</nav>
+<div id="output" data-border-style="none" data-header="true">
+<div id="html-box" class="code-wrap code-box box " role="region" aria-label="HTML">
+<pre tabindex="0"><code data-lang="htmlmixed" id="actual-html-code">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</code></pre>
+</div>
+<div id="css-box" class="code-wrap code-box box " role="region" aria-label="CSS">
+<pre tabindex="0"><code data-lang="text/x-sass" id="actual-css-code">body
+  margin: 0
+  padding: 0
+  font-family: monospace
+  background-image: url(&#39;https://raw.githubusercontent.com/makkBit/markdownPreviewer/master/src/bg.png&#39;)
+
+textarea
+  resize: vertical !important
+  overflow: auto
+  height: 80vh !important
+
+/* page title
+
+h4
+  font-size: 55px
+  color: purple
+  font-family: &#39;Candal&#39;, sans-serif
+  font-weight: bold
+  padding: 10px
+
+hr
+  border: solid 1px silver
+
+@media only screen and (max-width: 768px)
+  /* For mobile phones:
+  textarea
+    height: 40vh !important
+  h4
+    font-size: 20px</code></pre>
+<a href="#0" id="view-css-compiled-button" class="action-button bottom right view-compiled-button" data-type="css">
+View Compiled
+</a>
+</div>
+<div id="js-box" class="code-wrap code-box box " role="region" aria-label="JS">
+<pre tabindex="0"><code data-lang="jsx" id="actual-js-code">/********* Input component **********
+************************************/
+class Input extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = { 
+      value: &#39;**Preview** \r\n=======\r\n\r\n_markdown written in input area is shown here_  \r\n\r\n`console.log(\&#39;made using reactJS\&#39;);`  \r\n\r\n![alt text](https:\/\/uploads.toptal.io\/blog\/category\/logo\/291\/react.png)\r\n\r\nText attributes *italic*, **bold**, \r\n`monospace`, ~~strikethrough~~ .\r\n\r\nrefer this **[cheatsheet]()** for more github markdown reference\r\n\r\nmade by [mahak](https:\/\/twitter.com\/makk_bit)&#39;
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e){
+    this.setState({
+      value: e.target.value
+    });
+  }
+
+  render() {
+
+    return (
+      &lt;div className=&quot;container&quot;&gt;
+  
+        &lt;Header /&gt;
+
+        &lt;div className=&quot;row&quot;&gt;
+          &lt;div className=&quot;col-md-6 col-xs-12&quot;&gt;
+
+            &lt;textarea className=&quot;form-control&quot;  
+            value={this.state.value} onChange={this.handleChange}/&gt;
+
+          &lt;/div&gt;
+          &lt;div className=&quot;col-md-6 col-xs-12&quot;&gt;
+            
+            &lt;Previewer value={this.state.value} /&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    );
+  }
+}
+
+
+
+
+
+
+/*********** Header Component ***********
+****************************************/
+class Header extends React.Component {
+	render() {
+		return (
+			&lt;div&gt;
+				&lt;h4 className=&quot;text-center&quot;&gt;markdownPreviewer&lt;/h4&gt;
+				&lt;hr /&gt;
+			&lt;/div&gt;
+		);
+	}
+}
+
+
+
+
+
+
+/**********Previewer Component ************
+*****************************************/
+class Previewer extends React.Component {
+
+	createMarkup(){
+	  return {
+	    __html: marked(this.props.value)
+	  }
+	}
+
+	render() {
+		return (
+			&lt;div 
+			    dangerouslySetInnerHTML={this.createMarkup()}
+			    className=&quot;text-center&quot;
+            /&gt;
+		);
+	}
+}
+
+
+
+ReactDOM.render(
+  &lt;Input /&gt;,
+  document.getElementById(&#39;root&#39;)
+);</code></pre>
+<a href="#0" id="view-js-compiled-button" class="action-button bottom right view-compiled-button" data-type="js">
+View Compiled
+</a>
+</div>
+<div id="result-box" class="code-box active zoom-1" role="region" aria-label="Result">
+<iframe allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write" allowfullscreen="true" allowpaymentrequest="true" allowTransparency="true" class="result-iframe  " frameborder="0" id="result-iframe" loading="lazy" name="CodePen Preview for react markdown previewer" sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation" scrolling="yes" title="CodePen Preview for react markdown previewer" data-src="https://cdpn.io/makkBit/fullembedgrid/oBMxJO?animations=run&type=embed" src="https://cdpn.io/makkBit/fullembedgrid/oBMxJO?animations=run&type=embed">
+  </iframe>
+</div>
+<div id="about-box">
+<div class="about-container">
+<div class="about-user">
+<a href="https://codepen.io/makkBit" target="_blank" rel="noopener"><img src="https://assets.codepen.io/337689/internal/avatars/users/default.png?fit=crop&amp;format=auto&amp;height=256&amp;version=7&amp;width=256" loading="lazy" alt="" class="about-image"></a>
+<div class="about-user-info">
+<p>
+This Pen is owned by <a href="https://codepen.io/makkBit" target="_blank" rel="noopener">Mahak</a> on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.
+</p>
+<p>
+<a href="/makkBit" target="_blank" rel="noopener" class="about-user-more">
+See more by @makkBit on CodePen
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="resources-box" class="resources-box">
+<h3>External CSS</h3>
+<ol class="list-of-resources">
+<li>
+<a href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" target="_blank">https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css</a>
+</li>
+</ol>
+<h3>External JavaScript</h3>
+<ol class="list-of-resources">
+<li>
+<a href="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js" target="_blank">https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js</a>
+</li>
+<li>
+<a href="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js" target="_blank">https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js</a>
+</li>
+<li>
+<a href="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js" target="_blank">https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js</a>
+</li>
+</ol>
+</div>
+</div>
+<footer class="embed-footer" id="embed-footer">
+<button id="resources-link" class="resources-link action-button bottom left" href="#resources-box" aria-pressed="false" role="button">
+Resources
+</button>
+<ul class="scaling-choices bottom right">
+<li><button class="action-button" id="zoom-button-1">1×</button></li>
+<li><button class="action-button" id="zoom-button-05">0.5×</button></li>
+<li><button class="action-button" id="zoom-button-025">0.25×</button></li>
+</ul>
+<button id="rerun-button" class="action-button rerun-button bottom right rerun-button-modal">
+Rerun
+</button>
+</footer>
+<script nonce="fb7DzmZlVh0=">
+    __processedPen = {"html":"&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;","css":"body {\n  margin: 0;\n  padding: 0;\n  font-family: monospace;\n  background-image: url(&quot;https://raw.githubusercontent.com/makkBit/markdownPreviewer/master/src/bg.png&quot;);\n}\n\ntextarea {\n  resize: vertical !important;\n  overflow: auto;\n  height: 80vh !important;\n}\n\n/* page title */\nh4 {\n  font-size: 55px;\n  color: purple;\n  font-family: &quot;Candal&quot;, sans-serif;\n  font-weight: bold;\n  padding: 10px;\n}\n\nhr {\n  border: solid 1px silver;\n}\n\n@media only screen and (max-width: 768px) {\n  /* For mobile phones: */\n  textarea {\n    height: 40vh !important;\n  }\n\n  h4 {\n    font-size: 20px;\n  }\n}","js":"/********* Input component **********\n************************************/\nclass Input extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: &#39;**Preview** \\r\\n=======\\r\\n\\r\\n_markdown written in input area is shown here_  \\r\\n\\r\\n`console.log(\\&#39;made using reactJS\\&#39;);`  \\r\\n\\r\\n![alt text](https:\\/\\/uploads.toptal.io\\/blog\\/category\\/logo\\/291\\/react.png)\\r\\n\\r\\nText attributes *italic*, **bold**, \\r\\n`monospace`, ~~strikethrough~~ .\\r\\n\\r\\nrefer this **[cheatsheet]()** for more github markdown reference\\r\\n\\r\\nmade by [mahak](https:\\/\\/twitter.com\\/makk_bit)&#39; };\n\n    this.handleChange = this.handleChange.bind(this);\n  }\n\n  handleChange(e) {\n    this.setState({\n      value: e.target.value });\n\n  }\n\n  render() {\n\n    return /*#__PURE__*/(\n      React.createElement(&quot;div&quot;, { className: &quot;container&quot; }, /*#__PURE__*/\n\n      React.createElement(Header, null), /*#__PURE__*/\n\n      React.createElement(&quot;div&quot;, { className: &quot;row&quot; }, /*#__PURE__*/\n      React.createElement(&quot;div&quot;, { className: &quot;col-md-6 col-xs-12&quot; }, /*#__PURE__*/\n\n      React.createElement(&quot;textarea&quot;, { className: &quot;form-control&quot;,\n        value: this.state.value, onChange: this.handleChange })), /*#__PURE__*/\n\n\n      React.createElement(&quot;div&quot;, { className: &quot;col-md-6 col-xs-12&quot; }, /*#__PURE__*/\n\n      React.createElement(Previewer, { value: this.state.value })))));\n\n\n\n\n\n\n  }}\n\n\n\n\n\n\n\n/*********** Header Component ***********\n****************************************/\nclass Header extends React.Component {\n  render() {\n    return /*#__PURE__*/(\n      React.createElement(&quot;div&quot;, null, /*#__PURE__*/\n      React.createElement(&quot;h4&quot;, { className: &quot;text-center&quot; }, &quot;markdownPreviewer&quot;), /*#__PURE__*/\n      React.createElement(&quot;hr&quot;, null)));\n\n\n  }}\n\n\n\n\n\n\n\n/**********Previewer Component ************\n*****************************************/\nclass Previewer extends React.Component {\n\n  createMarkup() {\n    return {\n      __html: marked(this.props.value) };\n\n  }\n\n  render() {\n    return /*#__PURE__*/(\n      React.createElement(&quot;div&quot;, {\n        dangerouslySetInnerHTML: this.createMarkup(),\n        className: &quot;text-center&quot; }));\n\n\n  }}\n\n\n\n\nReactDOM.render( /*#__PURE__*/\nReact.createElement(Input, null),\ndocument.getElementById(&#39;root&#39;));"};
+    __preprocessors = {
+      "html": "none",
+      "css": "sass",
+      "js": "babel"
+    };
+    __preprocessorNames = {
+      "html": "HTML",
+      "css": "Sass",
+      "js": "Babel"
+    };
+    __editable = false;
+    __embed_prefill = false;
+  </script>
+<script src="https://cpwebassets.codepen.io/assets/embed/embed-e369dee9e85a1a53638c341339102b70938d2f103a2252bc1bf4c7ec1dc26212.js"></script>
+</body>
+</html>
