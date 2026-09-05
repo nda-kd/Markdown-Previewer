@@ -27,8 +27,7 @@ This project was created as part of the **freeCodeCamp Front End Libraries certi
 
 <p align="center">
   <img
-    src="<img width="2045" height="1050" alt="Screenshot 2026-09-05 230205" src="https://github.com/user-attachments/assets/dc382a4e-6d8c-4214-abdc-c1fde01d5cfb" />
-"
+    src="https://github.com/user-attachments/assets/b0693a9e-b65d-4d31-9777-fecbf87f212e"
     alt="Markdown Previewer"
     width="500"
   />
